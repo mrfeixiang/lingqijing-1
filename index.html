@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="灵棋经占卜 - 诚心问卜，灵棋指引">
+    <meta name="keywords" content="占卜,灵棋经,算命,卦象">
+    <title>灵棋经占卜</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 标题区域 -->
+        <div class="header">
+            <div class="title">灵棋经占卜</div>
+            <div class="subtitle">诚心问卜，灵棋指引</div>
+        </div>
+
+        <!-- 关于灵棋经 -->
+        <div class="card intro-card">
+            <div class="card-title">关于灵棋经</div>
+            <div class="card-content">
+                灵棋经是中国传统占卜术之一，使用12枚棋子（4个"上"、4个"中"、4个"下"）进行占卜。
+                根据棋子落定后"上、中、下"三个位置各自出现的数量，形成125种不同的卦象组合。
+            </div>
+        </div>
+
+        <!-- 占卜输入区域 -->
+        <div class="card question-card">
+            <div class="card-title">请输入您的问题</div>
+            <div class="input-wrapper">
+                <textarea
+                    id="question"
+                    class="question-input"
+                    placeholder="例如：我的事业发展如何？"
+                    maxlength="200"
+                    rows="4"
+                ></textarea>
+                <div class="char-count"><span id="charCount">0</span>/200</div>
+            </div>
+        </div>
+
+        <!-- 占卜按钮 -->
+        <div class="button-wrapper">
+            <button id="divinationBtn" class="btn-primary divination-btn" disabled>
+                开始占卜
+            </button>
+        </div>
+
+        <!-- 说明文字 -->
+        <div class="tips">
+            <span class="tips-text">💡 提示：请诚心提问，占卜结果仅供参考</span>
+        </div>
+
+        <!-- 历史记录入口 -->
+        <div class="history-link">
+            <button id="historyBtn" class="btn-secondary">
+                📜 查看历史记录
+            </button>
+        </div>
+    </div>
+
+    <!-- 加载遮罩 -->
+    <div id="loadingMask" class="loading-mask" style="display: none;">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div class="loading-text">占卜中...</div>
+        </div>
+    </div>
+
+    <!-- 结果弹窗 -->
+    <div id="resultModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">占卜结果</h2>
+                <span class="close-btn" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="result-section">
+                    <div class="result-label">您的问题</div>
+                    <div class="result-question" id="resultQuestion"></div>
+                </div>
+                <div class="result-section">
+                    <div class="result-label">卦象</div>
+                    <div class="hexagram-display" id="hexagramDisplay"></div>
+                </div>
+                <div class="result-section">
+                    <div class="result-label">卦名</div>
+                    <div class="result-value" id="hexagramName"></div>
+                </div>
+                <div class="result-section">
+                    <div class="result-label">卦辞</div>
+                    <div class="result-text" id="hexagramText"></div>
+                </div>
+                <div class="result-section">
+                    <div class="result-label">解读</div>
+                    <div class="result-text interpretation" id="interpretation"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 历史记录弹窗 -->
+    <div id="historyModal" class="modal" style="display: none;">
+        <div class="modal-content history-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">历史记录</h2>
+                <span class="close-btn" id="closeHistory">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="historyList" class="history-list">
+                    <div class="empty-history">暂无历史记录</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
